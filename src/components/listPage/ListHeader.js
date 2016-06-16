@@ -5,8 +5,12 @@ export default class ListHeader extends React.Component {
 		return (
 			<div style={{display: 'flex', justifyContent: 'space-between'}}>
 				<h4>This is my ListHeader</h4>
-				<button>new</button>
+				<button onClick={this.props.handleClickNew}>new</button>
 			</div>
 		);
 	}
+}
+
+ListHeader.propTypes = {
+	handleClickNew: React.PropTypes.func.isRequired
 }
