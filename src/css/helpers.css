@@ -35,3 +35,21 @@
 	.btnIcon:hover {
 		background-color: #44c0ff;
 	}
+/* animation */
+@-webkit-keyframes fadeIn { 
+  from { opacity:0; } to { opacity:1; } }
+@-moz-keyframes fadeIn { 
+  from { opacity:0; } to { opacity:1; } }
+@keyframes fadeIn { 
+  from { opacity:0; } to { opacity:1; } }
+
+.fadeIn {
+  animation-name: fadeIn;
+  -webkit-animation-name: fadeIn;  
+
+  animation-duration: 0.25s; 
+  -webkit-animation-duration: 0.25s;
+
+  animation-timing-function: ease-out;  
+  -webkit-animation-timing-function: ease-out;  
+}

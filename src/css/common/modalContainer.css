@@ -1,0 +1,13 @@
+.modalContainer {
+	composes: fadeIn from '../helpers.css';
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	z-index: 1000;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 100vw;
+	height: 100vh;
+	background-color: rgba(0,0,0,0.5);
+}

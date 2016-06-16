@@ -1,4 +1,5 @@
 import React from 'react';
+import { Motion, spring, presets } from 'react-motion';
 import Item from './Item.js';
 import * as styles from '../../css/listpage/list.css';
 
@@ -6,13 +7,16 @@ export default class List extends React.Component {
 	render() {
 		let { items } = this.props;
 		let listOfItems = items.map((item, index) =>
-				<li key={index} className={styles.listItem}>
+			<Motion key={index} defaultStyle={{maxh: 0}} style={{maxh: spring(200, presets.gentle)}}>
+			{({maxh}) =>
+				<li className={styles.listItem} style={{maxHeight: `${maxh}px`, overflow: 'hidden'}}>
 					<Item
 						media={this.props.media}
-						item={item} // {id: num, title: 'string'}
+						item={item} 
 						handleDelete={this.props.handleDelete}
 						handleItemEdit={this.props.handleItemEdit} />
-				</li>
+				</li>}
+			</Motion>
 		);
 		return (
 			<ul className={styles.list}>
