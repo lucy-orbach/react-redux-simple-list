@@ -6,6 +6,7 @@ export default class Item extends React.Component {
 		return (
 			<div style={{backgroundColor: '#f3f3f3', margin: '20px'}}>
 				<h5>{item.title} {item.id}</h5>
+				<p>{item.description}</p>
 				<button key={0} onClick={() => this.props.handleItemEdit(item)}>Edit</button>
 				<button key={1} onClick={() => this.props.handleDelete(item.id)}>Delete</button>
 			</div>

@@ -16,7 +16,8 @@ class ListPage extends React.Component {
 		};
 		this.state.activeItem = {
 			id: this.props.items.length > 0 ? lastItem.id + 1 : 1, 
-			title: '' 
+			title: '',
+			description: '' 
 		};
 		this.handleInputChange = this.handleInputChange.bind(this);
 		this.handleNewItem = this.handleNewItem.bind(this);
@@ -32,7 +33,8 @@ class ListPage extends React.Component {
 			editing: false,
 			activeItem: {
 				id: lastItem.id + 1, 
-				title: '' }
+				title: '',
+				description: '' }
 		});
 	}
 	handleInputChange(activeItem) { //(e.target.value, this.props.item.id);
@@ -76,7 +78,7 @@ class ListPage extends React.Component {
 					: null
 				}
 				<section style={{width: '500px', margin: '100px, auto', border: '4px solid cyan'}}>
-					<h2>This is my List Pagee</h2>
+					<h2>ToDos</h2>
 					<ListHeader handleClickNew={this.handleToggleModal} />
 					<List
 						items={items}
