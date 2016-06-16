@@ -3,6 +3,13 @@ import ListPage from './listPage/ListPage.js';
 import * as styles from '../css/app.css';
 
 export default class App extends React.Component {
+	constructor(props) {
+		super(props);
+		this.state.media = {
+			mobile: false,
+			landscape: true
+		};
+	}
 	render() {
 		return (
 			<div className={styles.appMain}>
