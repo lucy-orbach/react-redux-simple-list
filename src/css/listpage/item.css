@@ -39,3 +39,9 @@
 	height: 75px;
 	margin: 10px;
 }
+/* mobile */
+@media (max-device-width: 767px), (max-width: 767px) {
+	.itemHeader {
+		border-bottom: none;
+	}
+}

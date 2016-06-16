@@ -19,3 +19,10 @@
 .listItem {
 	margin-bottom: 20px;
 }
+/* mobile */
+@media (max-device-width: 767px), (max-width: 767px) {
+	.list {
+		padding: 20px;
+		height: 90vh;
+	}
+}

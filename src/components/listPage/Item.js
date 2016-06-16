@@ -9,10 +9,12 @@ export default class Item extends React.Component {
 				<div className={styles.itemHeader}>
 					<h5 className={styles.title}>{item.title}</h5>
 					<button key={0} className={styles.btnEdit}onClick={() => this.props.handleItemEdit(item)}>Edit</button>
-					<button key={1} className={styles.btnDelete}onClick={() => this.props.handleDelete(item.id)}>Delete</button>
+					<button key={1} className={styles.btnDelete} onClick={() => this.props.handleDelete(item.id)}>Delete</button>
 				</div>
-				<p className={styles.paragraph}>{item.description ? item.description : 'This item has no description'}</p>
-				
+				{!this.props.media.mobile
+					? <p className={styles.paragraph}>{item.description ? item.description : 'This item has no description'}</p>
+					: null
+				}
 			</div>
 		);
 	}
@@ -20,6 +22,7 @@ export default class Item extends React.Component {
 
 Item.propTypes = {
 	item: React.PropTypes.object.isRequired,
+	media: React.PropTypes.object.isRequired,
 	handleDelete: React.PropTypes.func.isRequired,
 	handleItemEdit: React.PropTypes.func.isRequired
 };

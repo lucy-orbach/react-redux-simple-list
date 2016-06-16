@@ -7,7 +7,8 @@ export default class List extends React.Component {
 		let { items } = this.props;
 		let listOfItems = items.map((item, index) =>
 				<li key={index} className={styles.listItem}>
-					<Item 
+					<Item
+						media={this.props.media}
 						item={item} // {id: num, title: 'string'}
 						handleDelete={this.props.handleDelete}
 						handleItemEdit={this.props.handleItemEdit} />
@@ -26,6 +27,7 @@ export default class List extends React.Component {
 
 List.propTypes = {
 	items: React.PropTypes.array.isRequired,
+	media: React.PropTypes.object.isRequired,
 	handleDelete: React.PropTypes.func.isRequired,
 	handleItemEdit: React.PropTypes.func.isRequired
 };

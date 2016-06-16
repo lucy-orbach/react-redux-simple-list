@@ -33,7 +33,7 @@ class ListPage extends React.Component {
 		this.setState({
 			editing: false,
 			activeItem: {
-				id: lastItem.id + 1, 
+				id: lastItem ? lastItem.id + 1 : 1, 
 				title: '',
 				description: '' }
 		});
@@ -82,6 +82,7 @@ class ListPage extends React.Component {
 					<ListHeader handleClickNew={this.handleToggleModal} />
 					<List
 						items={items}
+						media={this.props.media}
 						handleDelete={this.handleDelete}
 						handleItemEdit={this.handleItemEdit} />
 				</section>
@@ -92,7 +93,8 @@ class ListPage extends React.Component {
 
 ListPage.propTypes = {
 	items: React.PropTypes.array.isRequired,
-	dispatch: React.PropTypes.func.isRequired 
+	dispatch: React.PropTypes.func.isRequired,
+	media: React.PropTypes.object.isRequired
 };
 
 function mapStateToProps(state, ownProps) {

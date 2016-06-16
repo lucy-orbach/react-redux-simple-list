@@ -1,12 +1,17 @@
 .listPage {
-	width: 90%;
+	width: 750px;
 	border: 1px solid #c3c3c3;
 }
 .itemsSection {}
-
-/* desktop */
-@media (min-width: 800px) {
+/* mobile */
+@media (max-device-width: 767px), (max-width: 767px) {
 	.listPage {
-		width: 750px;
+		width: 100%;
+		border: none;
+		border-top: 1px solid #c3c3c3;
 	}
+}
+/* desktop */
+@media screen and (min-width: 800px) {
+
 }

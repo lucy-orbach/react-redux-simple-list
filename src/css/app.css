@@ -31,6 +31,7 @@ html, body {
 	min-height: 100vh;
 	margin: 0px;
 }
-.appTitle {
+.appTitle {}
 
-}
+/* mobile */
+@media (max-device-width: 767px), (max-width: 767px) {}
