@@ -1,0 +1,41 @@
+.item {
+	padding: 10px;
+	background-color: #fff;
+	box-shadow: 4px 6px 4px rgba(0,0,0,0.1);
+}
+.itemHeader {
+	display: -webkit-flex;
+	display: -moz-flex;
+	display: -ms-flex;
+	display: -o-flex;
+	display: flex;
+	justify-content: space-between;
+	-ms-align-items: center;
+	align-items: center;
+	padding: 0px 10px;
+	border-bottom: 1px dashed #c3c3c3;
+}
+.title {
+	composes: titles from '../helpers.css';
+	font-size: 18px;
+	margin-right: auto;
+}
+.btnEdit {
+	composes: btnIcon from '../helpers.css';
+	background-image: url(../../images/pencilCy.png);
+}
+	.btnEdit:hover {
+		background-image: url(../../images/pencilWh.png);
+	}
+.btnDelete {
+	composes: btnIcon from '../helpers.css';
+	background-image: url(../../images/deleteCy.png);
+	margin-left: 10px;
+}
+	.btnDelete:hover {
+		background-image: url(../../images/deleteWh.png);
+	}
+.paragraph {
+	height: 75px;
+	margin: 10px;
+}

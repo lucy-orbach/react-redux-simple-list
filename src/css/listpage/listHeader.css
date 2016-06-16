@@ -1,0 +1,23 @@
+.listHeader {
+	display: -webkit-flex;
+	display: -moz-flex;
+	display: -ms-flex;
+	display: -o-flex;
+	display: flex;
+	justify-content: space-between;
+	-ms-align-items: center;
+	align-items: center;
+	padding: 10px 20px;
+	border-bottom: 4px solid #44c0ff;
+}
+.title {
+	composes: titles from '../helpers.css';
+	font-size: 24px;
+}
+.btnAdd {
+	composes: btnIcon from '../helpers.css';
+	background-image: url(../../images/plusCy.png);
+}
+	.btnAdd:hover {
+		background-image: url(../../images/plusWh.png);
+	}

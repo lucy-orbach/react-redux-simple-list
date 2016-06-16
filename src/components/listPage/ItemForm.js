@@ -1,4 +1,5 @@
 import React from 'react';
+import * as styles from '../../css/listpage/itemForm.css';
 
 export default class ItemForm extends React.Component {
 	constructor(props) {
@@ -25,12 +26,32 @@ export default class ItemForm extends React.Component {
 	render() {
 		let {item} = this.props;
 		return (
-			<div style={{width: '350px', height: '200px', padding: '20px', backgroundColor: '#fff'}}>
-				<button onClick={this.props.handleCloseModal}>x</button>
-				<h2>{this.props.editing ? 'Edit Item' : 'Add New Item'}</h2>
-				<input type="text" value={item.title} placeholder="Enter Item's Title" onChange={this.handleInputChange} />
-				<textarea type="text" value={item.description} placeholder="Brief Description:" onChange={this.handleTextareaChange} />
-				<input type="submit" value={this.props.editing ? 'Save Changes' : 'Add Item'} onClick={this.props.editing ? this.props.handleSaveChanges : this.props.handleNewItem} />
+			<div className={styles.itemForm}>
+				<button className={styles.btnClose} onClick={this.props.handleCloseModal}>x</button>
+				<div className={styles.container}>
+					<h2 className={styles.formTitle}>{this.props.editing ? 'Edit Item' : 'Add New Item'}</h2>
+				<div className={styles.form}>
+					<input
+						type="text"
+						value={item.title}
+						placeholder="Enter Item's Title"
+						className={styles.inputText}
+						onChange={this.handleInputChange} />
+					<textarea
+						value={item.description}
+						placeholder="Brief Description..."
+						className={styles.textarea}
+						maxLength="100"
+						onChange={this.handleTextareaChange} />
+					<input
+						type="submit"
+						value={this.props.editing ? 'Save Changes' : 'Add Item'}
+						className={styles.btnSubmit}
+						onClick={this.props.editing
+							? this.props.handleSaveChanges
+							: this.props.handleNewItem} />
+				</div>
+				</div>
 			</div>
 		);
 	}

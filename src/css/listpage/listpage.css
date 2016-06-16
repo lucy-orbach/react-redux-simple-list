@@ -1,0 +1,12 @@
+.listPage {
+	width: 90%;
+	border: 1px solid #c3c3c3;
+}
+.itemsSection {}
+
+/* desktop */
+@media (min-width: 800px) {
+	.listPage {
+		width: 750px;
+	}
+}

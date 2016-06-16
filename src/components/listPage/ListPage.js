@@ -5,6 +5,7 @@ import ListHeader from './ListHeader.js';
 import List from './List.js';
 import ModalContainer from '../common/ModalContainer.js';
 import ItemForm from './ItemForm.js';
+import * as styles from '../../css/listpage/listpage.css';
 
 class ListPage extends React.Component {
 	constructor(props) {
@@ -58,13 +59,13 @@ class ListPage extends React.Component {
 		this.handleToggleModal();	
 	}
 	handleToggleModal() {
-		this.setState({showModal: !this.state.showModal})
+		this.setState({showModal: !this.state.showModal});
 	}
 	render() {
 		let { items } = this.props;
 		let { showModal } = this.state;
 		return (
-			<div>
+			<div className={styles.listPage}>
 				{showModal
 					?	<ModalContainer>
 							<ItemForm
@@ -77,8 +78,7 @@ class ListPage extends React.Component {
 						</ModalContainer>
 					: null
 				}
-				<section style={{width: '500px', margin: '100px, auto', border: '4px solid cyan'}}>
-					<h2>ToDos</h2>
+				<section className={styles.itemsSection}>
 					<ListHeader handleClickNew={this.handleToggleModal} />
 					<List
 						items={items}

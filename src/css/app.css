@@ -1,0 +1,36 @@
+html, body {
+  position: relative;
+  width: 100vw;
+  padding: 0px;
+  margin: 0px;
+  font-family: "Courier New", Courier, monospace;
+  font-size: 16px;
+  overflow-x: hidden;
+  *, *:before, *:after {
+    box-sizing: border-box;
+    /* renders font with proper weight on Mozilla*/
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+.appMain {
+	position: relative;
+	display: -webkit-flex;
+	display: -moz-flex;
+	display: -ms-flex;
+	display: -o-flex;
+	display: flex;
+	-webkit-flex-direction: column;
+	-moz-flex-direction: column;
+	-ms-flex-direction: column;
+	-o-flex-direction: column;
+	flex-direction: column;
+	justify-content: flex-start;
+	-ms-align-items: center;
+	align-items: center;
+	width: 100vw;
+	min-height: 100vh;
+	margin: 0px;
+}
+.appTitle {
+
+}

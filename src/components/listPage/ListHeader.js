@@ -1,11 +1,12 @@
 import React from 'react';
+import * as styles from '../../css/listpage/listHeader.css';
 
 export default class ListHeader extends React.Component {
 	render() {
 		return (
-			<div style={{display: 'flex', justifyContent: 'space-between'}}>
-				<h4>This is my ListHeader</h4>
-				<button onClick={this.props.handleClickNew}>new</button>
+			<div className={styles.listHeader}>
+				<h4 className={styles.title}>This is my ListHeader</h4>
+				<button className={styles.btnAdd} onClick={this.props.handleClickNew}>new</button>
 			</div>
 		);
 	}
@@ -13,4 +14,4 @@ export default class ListHeader extends React.Component {
 
 ListHeader.propTypes = {
 	handleClickNew: React.PropTypes.func.isRequired
-}
+};

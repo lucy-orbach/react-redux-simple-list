@@ -1,0 +1,96 @@
+.itemForm {
+	position: relative;
+	width: 330px;
+	background-color: #fff;
+}
+.btnClose {
+	composes: btnIcon from '../helpers.css';
+	position: absolute;
+	top: 5px;
+	right: 5px;
+	width: 20px;
+	height: 20px;
+	background-image: url(../../images/closeCy.png);
+}
+	.btnClose:hover {
+		background-image: url(../../images/closeWh.png);
+	}
+.container {
+	position: relative;
+	padding: 0px 10px;
+	margin: 40px 8px 8px;
+	border: 2px solid #44c0ff;
+}
+.formTitle {
+	position: relative;
+	transform: translateY(-20px);
+	display: inline-block;
+	padding: 0px 10px;
+	margin: 0px;
+	background-color: #fff;
+}
+.form {
+	display: -webkit-flex;
+	display: -moz-flex;
+	display: -ms-flex;
+	display: -o-flex;
+	display: flex;
+	-webkit-flex-direction: column;
+	-moz-flex-direction: column;
+	-ms-flex-direction: column;
+	-o-flex-direction: column;
+	flex-direction: column;
+	justify-content: flex-start;
+}
+.input {
+	display: block;
+	padding: 3px 5px;
+	margin-bottom: 20px;
+	font-size: 18px;
+	border: none;
+	transition: all 0.3s ease-in-out;
+}
+	.input:focus {
+		outline: none;
+	}
+	.input:focus::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+	  text-indent: -9999px;
+	  transition: all 0.8s ease-in-out;
+	}
+	.input:focus::-moz-placeholder { /* Firefox 19+ */
+	  text-indent: -9999px;
+	  transition: all 0.8s ease-in-out;
+	}
+	.input:focus:-ms-input-placeholder { /* IE 10+ */
+	  text-indent: -9999px;
+	  transition: all 0.8s ease-in-out;
+	}
+	.input:focus:-moz-placeholder { /* Firefox 18- */
+	  text-indent: -9999px;
+	  transition: all 0.8s ease-in-out;
+	}
+.inputText {
+	composes: input;
+	border-bottom: 1px dashed #44c0ff;
+}
+.textarea {
+	composes: input;
+	height: 150px;
+	background-color: #f3f3f3;
+	resize: none;
+}
+.btnSubmit {
+	composes: btn from '../helpers.css';
+	display: inline-block;
+	border: none;
+	padding: 15px 30px;
+	margin: 20px auto;
+	background-color: #44c0ff;
+	color: #fff;
+	font-size: 16px;
+	letter-spacing: 1.5px;
+} 
+	.btnSubmit:hover {
+		background-color: #000;
+		color: #44c0ff;
+	}
