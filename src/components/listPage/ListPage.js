@@ -1,5 +1,6 @@
 import React from 'react';
 import  { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 import * as itemActions from '../../actions/itemActions.js';
 import ListHeader from './ListHeader.js';
 import List from './List.js';
@@ -42,15 +43,15 @@ class ListPage extends React.Component {
 		this.setState({activeItem});
 	}
 	handleNewItem() {	
-		this.props.dispatch(itemActions.addItem(this.state.activeItem));
+		this.props.actions.addItem(this.state.activeItem);
 		this.handleToggleModal();
 	}
 	handleSaveChanges() {
-		this.props.dispatch(itemActions.editItem(this.state.activeItem));
+		this.props.actions.editItem(this.state.activeItem);
 		this.handleToggleModal();
 	}
 	handleDelete(id) {
-		this.props.dispatch(itemActions.deleteItem(id));
+		this.props.actions.deleteItem(id);
 	}
 	handleItemEdit(activeItem) {
 		this.setState({
@@ -62,11 +63,10 @@ class ListPage extends React.Component {
 		this.setState({showModal: !this.state.showModal});
 	}
 	render() {
-		let { items } = this.props;
-		let { showModal } = this.state;
+		let { items, media } = this.props;
 		return (
 			<div className={styles.listPage}>
-				{showModal
+				{this.state.showModal
 					?	<ModalContainer>
 							<ItemForm
 								editing={this.state.editing}
@@ -82,7 +82,7 @@ class ListPage extends React.Component {
 					<ListHeader handleClickNew={this.handleToggleModal} />
 					<List
 						items={items}
-						media={this.props.media}
+						media={media}
 						handleDelete={this.handleDelete}
 						handleItemEdit={this.handleItemEdit} />
 				</section>
@@ -92,15 +92,20 @@ class ListPage extends React.Component {
 }
 
 ListPage.propTypes = {
+	actions: React.PropTypes.object.isRequired,
 	items: React.PropTypes.array.isRequired,
-	dispatch: React.PropTypes.func.isRequired,
 	media: React.PropTypes.object.isRequired
 };
-
+// Redux connect...
 function mapStateToProps(state, ownProps) {
 	return {
 		items: state.items
 	};
 }
 
-export default connect(mapStateToProps)(ListPage);
+function mapDispatchToProps(dispatch) {
+	return {
+		actions: bindActionCreators(itemActions, dispatch)
+	};
+}
+export default connect(mapStateToProps, mapDispatchToProps)(ListPage);
