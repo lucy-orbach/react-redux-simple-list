@@ -1,6 +1,6 @@
 import React from 'react';
 // import { canUseDOM } from '../../tools/canUseDOM.js';
-import ListPage from './listPage/ListPage.js';
+import ListPageContainer from './listPage/ListPageContainer.js';
 import * as styles from '../css/app.css';
 
 export default class App extends React.Component {
@@ -28,7 +28,7 @@ export default class App extends React.Component {
 		return (
 			<div className={styles.appMain}>
 				<h2 className={styles.appTitle}>Simple List App</h2>
-				<ListPage media={this.state.media} />
+				<ListPageContainer media={this.state.media} />
 			</div>
 		);
 	}

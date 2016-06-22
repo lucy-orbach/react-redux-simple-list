@@ -17,7 +17,7 @@ const List = (props) => {
 						media={props.media}
 						item={item} 
 						handleDelete={props.handleDelete}
-						handleItemEdit={props.handleItemEdit} />
+						handleEditItem={props.handleEditItem} />
 				</li> }
 		</Motion>
 	);
@@ -35,7 +35,7 @@ List.propTypes = {
 	items: React.PropTypes.array.isRequired,
 	media: React.PropTypes.object.isRequired,
 	handleDelete: React.PropTypes.func.isRequired,
-	handleItemEdit: React.PropTypes.func.isRequired
+	handleEditItem: React.PropTypes.func.isRequired
 };
 
 export default List;

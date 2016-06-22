@@ -21,13 +21,12 @@ class ListPage extends React.Component {
 			title: '',
 			description: '' 
 		};
-		this.handleInputChange = this.handleInputChange.bind(this);
+		this.handleChange=this.handleChange.bind(this);
+		this.handleDelete = this.handleDelete.bind(this);
+		this.handleEditItem = this.handleEditItem.bind(this);
 		this.handleNewItem = this.handleNewItem.bind(this);
 		this.handleSaveChanges = this.handleSaveChanges.bind(this);
-		this.handleDelete = this.handleDelete.bind(this);
-		this.handleItemEdit = this.handleItemEdit.bind(this);
 		this.handleToggleModal = this.handleToggleModal.bind(this);
-		// this.resetInput = this.resetInput.bind(this);
 	}
 	componentWillReceiveProps(nextProps) {
 		let lastItem = nextProps.items[nextProps.items.length - 1];
@@ -39,8 +38,22 @@ class ListPage extends React.Component {
 				description: '' }
 		});
 	}
-	handleInputChange(activeItem) { //(e.target.value, this.props.item.id);
+	handleChange(e) {
+		e.preventDefault();
+		let title = e.target.value;
+		let keyName = e.target.name;
+		let activeItem = Object.assign({}, this.state.activeItem, {[e.target.name]: e.target.value});
 		this.setState({activeItem});
+	}
+	handleDelete(id) {
+		this.props.actions.deleteItem(id);
+	}
+	handleEditItem(item) {
+		console.log('edit');
+		this.setState({
+			editing: true,
+			activeItem: item });
+		this.handleToggleModal();	
 	}
 	handleNewItem() {	
 		this.props.actions.addItem(this.state.activeItem);
@@ -49,15 +62,6 @@ class ListPage extends React.Component {
 	handleSaveChanges() {
 		this.props.actions.editItem(this.state.activeItem);
 		this.handleToggleModal();
-	}
-	handleDelete(id) {
-		this.props.actions.deleteItem(id);
-	}
-	handleItemEdit(activeItem) {
-		this.setState({
-			editing: true,
-			activeItem });
-		this.handleToggleModal();	
 	}
 	handleToggleModal() {
 		this.setState({showModal: !this.state.showModal});
@@ -71,6 +75,7 @@ class ListPage extends React.Component {
 							<ItemForm
 								editing={this.state.editing}
 								item={this.state.activeItem} 
+								onChange={this.handleChange}
 								onInputChange={this.handleInputChange}
 								handleSaveChanges={this.handleSaveChanges}
 								handleNewItem={this.handleNewItem}
@@ -84,7 +89,7 @@ class ListPage extends React.Component {
 						items={items}
 						media={media}
 						handleDelete={this.handleDelete}
-						handleItemEdit={this.handleItemEdit} />
+						handleEditItem={this.handleEditItem} />
 				</section>
 			</div>
 		);

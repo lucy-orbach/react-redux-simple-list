@@ -9,7 +9,7 @@ const Item = (props) => {
 				<button
 					key={0}
 					className={styles.btnEdit}
-					onClick={() => props.handleItemEdit(props.item)}>
+					onClick={() => props.handleEditItem(props.item)}>
 					Edit
 				</button>
 				<button
@@ -35,7 +35,7 @@ Item.propTypes = {
 	item: React.PropTypes.object.isRequired,
 	media: React.PropTypes.object.isRequired,
 	handleDelete: React.PropTypes.func.isRequired,
-	handleItemEdit: React.PropTypes.func.isRequired
+	handleEditItem: React.PropTypes.func.isRequired
 };
 
 export default Item;
