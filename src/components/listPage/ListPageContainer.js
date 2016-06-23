@@ -1,11 +1,11 @@
 import React from 'react';
 import  { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import * as itemActions from '../../actions/itemActions.js';
 import ListHeader from './ListHeader.js';
 import List from './List.js';
 import ModalContainer from '../common/ModalContainer.js';
 import ItemForm from './ItemForm.js';
+import * as itemActions from '../../actions/itemActions.js';
 import * as styles from '../../css/listpage/listpage.css';
 
 class ListPage extends React.Component {
@@ -14,57 +14,56 @@ class ListPage extends React.Component {
 		let lastItem = this.props.items[this.props.items.length - 1];
 		this.state = {
 			showModal: false,
-			editing: false	
+			errors: {}	
 		};
-		this.state.activeItem = {
-			id: this.props.items.length > 0 ? lastItem.id + 1 : 1, 
+		this.state.activeItem = { //template for editing or new item
+			id: '', 
 			title: '',
 			description: '' 
 		};
 		this.handleChange=this.handleChange.bind(this);
+		this.handleClickEdit = this.handleClickEdit.bind(this);
 		this.handleDelete = this.handleDelete.bind(this);
-		this.handleEditItem = this.handleEditItem.bind(this);
-		this.handleNewItem = this.handleNewItem.bind(this);
-		this.handleSaveChanges = this.handleSaveChanges.bind(this);
+		this.handleSaveItem=this.handleSaveItem.bind(this);
 		this.handleToggleModal = this.handleToggleModal.bind(this);
+		this.resetActiveItem = this.resetActiveItem.bind(this);
 	}
 	componentWillReceiveProps(nextProps) {
-		let lastItem = nextProps.items[nextProps.items.length - 1];
-		this.setState({
-			editing: false,
-			activeItem: {
-				id: lastItem ? lastItem.id + 1 : 1, 
-				title: '',
-				description: '' }
-		});
+		// let lastItem = nextProps.items[nextProps.items.length - 1];
+		// this.setState({
+		// 	editing: false,
+		// 	activeItem: {
+		// 		id: lastItem ? lastItem.id + 1 : 1, 
+		// 		title: '',
+		// 		description: '' }
+		// });
 	}
 	handleChange(e) {
 		e.preventDefault();
-		let title = e.target.value;
-		let keyName = e.target.name;
-		let activeItem = Object.assign({}, this.state.activeItem, {[e.target.name]: e.target.value});
-		this.setState({activeItem});
+		let activeItem = Object.assign({}, this.state.activeItem, {[e.target.name]: e.target.value });
+		this.setState({ activeItem });
 	}
-	handleDelete(id) {
-		this.props.actions.deleteItem(id);
-	}
-	handleEditItem(item) {
-		console.log('edit');
-		this.setState({
-			editing: true,
-			activeItem: item });
+	handleClickEdit(item) {
+		this.setState({ activeItem: item });
 		this.handleToggleModal();	
 	}
-	handleNewItem() {	
-		this.props.actions.addItem(this.state.activeItem);
-		this.handleToggleModal();
+	handleDelete(itemId) {
+		this.props.actions.deleteItem(itemId);
 	}
-	handleSaveChanges() {
-		this.props.actions.editItem(this.state.activeItem);
+	handleSaveItem(e) {
+		e.preventDefault();
+		this.props.actions.saveItem(this.state.activeItem);
 		this.handleToggleModal();
 	}
 	handleToggleModal() {
 		this.setState({showModal: !this.state.showModal});
+	}
+	resetActiveItem() {
+		this.setState({
+			activeItem: {id: '', title: '', description: ''},
+			errors: {},
+			showModal: false
+		});
 	}
 	render() {
 		let { items, media } = this.props;
@@ -73,13 +72,11 @@ class ListPage extends React.Component {
 				{this.state.showModal
 					?	<ModalContainer>
 							<ItemForm
-								editing={this.state.editing}
+								errors={this.state.errors}
 								item={this.state.activeItem} 
 								onChange={this.handleChange}
-								onInputChange={this.handleInputChange}
-								handleSaveChanges={this.handleSaveChanges}
-								handleNewItem={this.handleNewItem}
-								handleCloseModal={this.handleToggleModal} />
+								handleSaveItem={this.handleSaveItem}
+								handleCloseModal={this.resetActiveItem} />
 						</ModalContainer>
 					: null
 				}
@@ -89,7 +86,7 @@ class ListPage extends React.Component {
 						items={items}
 						media={media}
 						handleDelete={this.handleDelete}
-						handleEditItem={this.handleEditItem} />
+						handleEditItem={this.handleClickEdit} />
 				</section>
 			</div>
 		);

@@ -16,7 +16,7 @@ const ItemForm = (props) => {
 				</button>
 				<div className={styles.container}>
 					<h2 className={styles.formTitle}>
-						{ props.editing ? 'Edit Item' : 'Add New Item' }
+						{ props.item.id !== '' ? 'Edit Item' : 'Add New Item' }
 					</h2>
 				<div className={styles.form}>
 					<input
@@ -35,11 +35,9 @@ const ItemForm = (props) => {
 						onChange={props.onChange} />
 					<input
 						type="submit"
-						value={props.editing ? 'Save Changes' : 'Add Item'}
+						value={props.item.id ? 'Save Changes' : 'Add Item'}
 						className={styles.btnSubmit}
-						onClick={props.editing
-							? props.handleSaveChanges
-							: props.handleNewItem } />
+						onClick={props.handleSaveItem} />
 				</div>
 				</div>
 			</div>}
@@ -48,12 +46,9 @@ const ItemForm = (props) => {
 };
 
 ItemForm.propTypes = {
-	editing: React.PropTypes.bool.isRequired,
 	item: React.PropTypes.object.isRequired, 
 	onChange: React.PropTypes.func.isRequired,
-	onInputChange: React.PropTypes.func.isRequired,
-	handleSaveChanges: React.PropTypes.func.isRequired,
-	handleNewItem: React.PropTypes.func.isRequired,
+	handleSaveItem: React.PropTypes.func.isRequired,
 	handleCloseModal: React.PropTypes.func.isRequired
 };
 

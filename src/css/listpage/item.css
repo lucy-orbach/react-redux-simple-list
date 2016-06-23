@@ -1,4 +1,5 @@
 .item {
+	width: 100%;
 	padding: 10px;
 	background-color: #fff;
 	box-shadow: 4px 6px 4px rgba(0,0,0,0.1);
@@ -12,13 +13,13 @@
 	justify-content: space-between;
 	-ms-align-items: center;
 	align-items: center;
-	padding: 0px 10px;
+	padding: 5px 10px;
 	border-bottom: 1px dashed #c3c3c3;
 }
 .title {
 	composes: titles from '../helpers.css';
 	font-size: 18px;
-	margin-right: auto;
+	margin: 0px auto 0px 0px;
 }
 .btnEdit {
 	composes: btnIcon from '../helpers.css';
@@ -30,7 +31,7 @@
 .btnDelete {
 	composes: btnIcon from '../helpers.css';
 	background-image: url(../../images/deleteCy.png);
-	margin-left: 10px;
+	margin: 0px 10px;
 }
 	.btnDelete:hover {
 		background-image: url(../../images/deleteWh.png);
